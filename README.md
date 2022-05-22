@@ -1,3 +1,3 @@
-# sveltejs-kit-template-default-1t7yy5
+# experiments
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/sveltejs-kit-template-default-1t7yy5)
+repo to play around with new stuff
