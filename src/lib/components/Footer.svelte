@@ -7,17 +7,17 @@
 
 <footer>
   {#if !home}
-    <button on:click={() => goto('/')}>
+    <button on:click={() => goto('/')} aria-label="Home Button">
       <HomeIcon />
     </button>
   {/if}
-  <button on:click={() => document.body.removeAttribute('theme')}>
+  <button on:click={() => document.body.removeAttribute('theme')} aria-label="System Theme">
     <ZapIcon />
   </button>
-  <button on:click={() => document.body.setAttribute('theme', 'light')}>
+  <button on:click={() => document.body.setAttribute('theme', 'light')} aria-label="Light Theme">
     <SunIcon />
   </button>
-  <button on:click={() => document.body.setAttribute('theme', 'dark')}>
+  <button on:click={() => document.body.setAttribute('theme', 'dark')} aria-label="Dark Theme">
     <MoonIcon />
   </button>
 </footer>
