@@ -1,23 +1,29 @@
 <script lang="ts">
-  import { page as pageStore } from '$app/stores';
-  import { ArrowLeftIcon, ArrowRightIcon, ListIcon, InfoIcon } from 'svelte-feather-icons';
-  import pages from '$lib/pages';
+  import { ArrowLeftIcon, ArrowRightIcon, ListIcon, InfoIcon, XIcon } from 'svelte-feather-icons';
+  import ExperimentDescription from '$lib/components/ExperimentDescription.svelte';
   import { isNavOpen } from '$lib/stores/nav';
+  import { currentPage } from '$lib/stores/currentPage';
+  import pages from '$lib/pages';
 
-  $: page = $pageStore;
-  $: currentPageIndex = pages.findIndex((p) => `experiments/${p.path}` === page.routeId);
-  $: currentPage = pages[currentPageIndex];
+  let showDescription = false;
 </script>
 
 <header>
-  {#if currentPage}
+  {#if $currentPage}
     <button><ArrowLeftIcon /></button>
-    <button><InfoIcon size="1.4x" /></button>
-    <span>{currentPage?.title || '-'}</span>
+    <button
+      on:click|stopPropagation={() =>
+        (showDescription = $currentPage?.description && !showDescription)}
+      >{#if showDescription}<XIcon size="1.4x" />{:else}<InfoIcon size="1.4x" />{/if}</button
+    >
+    <span>{$currentPage?.title || '-'}</span>
     <button on:click={() => ($isNavOpen = true)}><ListIcon /></button>
     <button><ArrowRightIcon /></button>
   {/if}
 </header>
+{#if $currentPage?.description && showDescription}
+  <ExperimentDescription on:close={() => (showDescription = false)} />
+{/if}
 
 <style>
   header {
@@ -40,7 +46,7 @@
     display: flex;
   }
 
-  header * + * {
-    margin-left: var(--size-3);
+  header * {
+    margin: 0 var(--size-2);
   }
 </style>
