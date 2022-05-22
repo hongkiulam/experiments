@@ -4,7 +4,7 @@
 </script>
 
 <svelte:head>
-  <title>{$currentPage.title}</title>
+  <title>{$currentPage?.title}</title>
 </svelte:head>
 <CenterBox bordered>
   <slot />
