@@ -17,12 +17,14 @@
 <style>
   aside {
     position: fixed;
-    bottom: var(--size-9);
+    bottom: 0;
     left: calc((100% - min(400px, 100%)) / 2);
     width: 100%;
     max-width: 400px;
-    background: var(--color-bg);
+    background: rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(100px);
     padding: var(--size-4);
     border: 2px solid var(--color-primary);
+    border-bottom: 0;
   }
 </style>
