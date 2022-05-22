@@ -1,4 +1,3 @@
-
 <script context="module">
 	export const prerender = true;
 </script>
@@ -16,7 +15,7 @@
 <CenterBox>
 	<div class="intro">
 		<h1>A place for me to experiment with web technologies or libraries</h1>
-		<button class='view-experiments-btn' on:click={() => $isNavOpen = true}>
+		<button class="view-experiments-btn" on:click={() => ($isNavOpen = true)}>
 			View experiments <ListIcon />
 		</button>
 	</div>

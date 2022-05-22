@@ -11,11 +11,11 @@
 
 <Layout>
 	{#if isHome}
-		<header></header>
+		<header />
 	{:else}
 		<Header />
 	{/if}
-	<Nav/>
+	<Nav />
 	<main>
 		<slot />
 	</main>

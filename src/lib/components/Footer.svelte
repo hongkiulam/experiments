@@ -1,6 +1,6 @@
 <script>
 	import { goto } from '$app/navigation';
-	import { HomeIcon, ZapIcon, SunIcon, MoonIcon } from 'svelte-feather-icons'
+	import { HomeIcon, ZapIcon, SunIcon, MoonIcon } from 'svelte-feather-icons';
 
 	export let home = false;
 </script>
@@ -24,7 +24,7 @@
 
 <style>
 	footer {
-		padding:var(--size-2);
+		padding: var(--size-2);
 		display: flex;
 		align-items: center;
 		justify-content: center;
