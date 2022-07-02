@@ -8,7 +8,9 @@ export const currentPage = derived(pageStore, (page) => {
   if (currentPage) {
     return {
       ...currentPage,
-      index: currentPageIndex
+      index: currentPageIndex,
+      nextPath: pages[currentPageIndex + 1]?.path,
+      previousPath: pages[currentPageIndex - 1]?.path,
     };
   }
   return undefined;

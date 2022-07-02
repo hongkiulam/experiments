@@ -3,22 +3,32 @@
   import ExperimentDescription from '$lib/components/ExperimentDescription.svelte';
   import { isNavOpen } from '$lib/stores/nav';
   import { currentPage } from '$lib/stores/currentPage';
-  import pages from '$lib/pages';
+  import { goto } from '$app/navigation';
 
   let showDescription = false;
 </script>
 
 <header>
   {#if $currentPage}
-    <button><ArrowLeftIcon /></button>
+    <button
+      on:click={() => {
+        $currentPage?.previousPath && goto($currentPage.previousPath);
+      }}
+      disabled={!$currentPage?.previousPath}><ArrowLeftIcon /></button
+    >
     <button
       on:click|stopPropagation={() =>
-        (showDescription = $currentPage?.description && !showDescription)}
+        (showDescription = !!$currentPage?.description && !showDescription)}
       >{#if showDescription}<XIcon size="1.4x" />{:else}<InfoIcon size="1.4x" />{/if}</button
     >
     <span>{$currentPage?.title || '-'}</span>
     <button on:click={() => ($isNavOpen = true)}><ListIcon /></button>
-    <button><ArrowRightIcon /></button>
+    <button
+      on:click={() => {
+        $currentPage?.nextPath && goto($currentPage.nextPath);
+      }}
+      disabled={!$currentPage?.nextPath}><ArrowRightIcon /></button
+    >
   {/if}
 </header>
 {#if $currentPage?.description && showDescription}
@@ -44,6 +54,12 @@
     cursor: pointer;
     line-height: var(--size-5);
     display: flex;
+  }
+
+  header button:disabled,
+  header button[disabled] {
+    opacity: 0.5;
+    cursor: initial;
   }
 
   header * {
