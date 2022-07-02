@@ -21,7 +21,7 @@
         (showDescription = !!$currentPage?.description && !showDescription)}
       >{#if showDescription}<XIcon size="1.4x" />{:else}<InfoIcon size="1.4x" />{/if}</button
     >
-    <span>{$currentPage?.title || '-'}</span>
+    <span class="title">{$currentPage?.title || '-'}</span>
     <button on:click={() => ($isNavOpen = true)}><ListIcon /></button>
     <button
       on:click={() => {
@@ -64,5 +64,11 @@
 
   header * {
     margin: 0 var(--size-2);
+  }
+
+  @media only screen and (max-width: 400px) {
+    .title {
+      display: none;
+    }
   }
 </style>
